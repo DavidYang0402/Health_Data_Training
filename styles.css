@@ -1,0 +1,234 @@
+:root {
+    --primary-color: #ffcc00;
+    --background-dark: #1a1a1a;
+    --border-color: #ffcc00;
+    --button-hover-color: #ffd633;
+    --text-color: #ffcc00;
+    --background-color: #1a1a1a;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-dark);
+    color: var(--text-color);
+    width: 1980px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+form {
+    display: flex;
+    padding: 20px;
+}
+
+.left-column,
+.right-column,
+.ans-column{
+    min-width: 500px; max-width: 800px;
+    box-sizing: border-box;
+    padding: 20px;
+    margin: 20px;
+}
+
+.left-column {
+    flex:0;
+    padding-right: 20px;
+    background-color: #333333;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.right-column {
+    flex:1;
+    background-color: #333333;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+.ans-column{
+    flex:2;
+    height: 500px;
+    max-height: 500px;
+    padding-left: 20px;
+    background-color: #333333;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    justify-content: center;
+}
+
+h1 {
+    text-align: center;
+    color: var(--text-color);
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+span {
+    color: #adff2f;
+}
+
+input {
+    width: calc(100% - 16px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-color);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s, color 0.3s, background-color 0.3s;
+}
+
+input:valid {
+    border-color: #00cc66;
+}
+
+input:invalid {
+    border-color: #ff6666;
+}
+
+.field-container {
+    padding: 10px;
+    border: white solid 1px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    color: #adff2f;
+}
+
+.details-container {
+    margin-top: 10px;
+}
+
+.details-container input {
+    width: 100%;
+    margin-bottom: 10px;
+    border: 1px solid var(--border-color);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s, color 0.3s, background-color 0.3s;
+}
+
+input[type="button"] {
+    background-color: var(--primary-color);
+    color: var(--background-dark);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="button"]:hover {
+    background-color: var(--button-hover-color);
+    font-weight: bolder;
+}
+
+img {
+    width: 150%;
+    height: auto;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup {
+    background: #fff;
+    padding: 0; 
+    max-width: 100%; 
+    max-height: 100%; 
+    overflow: auto;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.close-btn {
+    color: #fff;
+    font-size: 30px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.popup img {
+    width: 100%; 
+    height: auto; 
+    max-width: 100%; 
+    max-height: 100%; 
+}
+
+#openImage{
+    background-color: var(--primary-color);
+    color: var(--background-dark);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+    height: 50px;
+    width: 150px;
+}
+
+#openImange:hover {
+    background-color: var(--button-hover-color);
+    font-weight: bolder;
+}
+
+#showDataButton {
+    background-color: var(--primary-color);
+    color: var(--background-dark);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+    height: 50px;
+    width: 150px;
+}
+
+#showDataButton:hover {
+    background-color: var(--button-hover-color);
+    font-weight: bolder;
+}
+
+#dataDisplay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+#dataDisplay .popup {
+    background: #fff;
+    padding: 20px;
+    max-width: 80%;
+    max-height: 80%;
+    overflow: auto;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+#askSmoke{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 50px;
+}
+
+#checkSmoke{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 50px;
+}

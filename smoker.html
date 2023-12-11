@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <title>Smoking 預測</title>
+    </head>
+    <body>
+        <div class="overlay" id="overlay">
+            <div class="popup">
+                <span class="close-btn" onclick="closePopup()">&#10006;</span>
+                <img src="./img/訓練圖.png" alt="Train Image">
+            </div>
+        </div>
+
+        <button id="showDataButton">顯示資料</button>
+
+        <div id="dataDisplay" class="overlay">
+            <div class="popup">
+                <span class="close-btn" onclick="closeDataDisplay()">&#10006;</span>
+                
+                <p>Data to display goes here.</p>
+            </div>
+        </div>
+
+        <button id="openImage" onclick="openPopup()">開啟訓練圖片</button>
+
+        <form id="smokerForm" action="R.php" method="post">
+            <div class="left-column">
+                <h1>吸菸者狀況預測</h1>
+                <label for="idAge">年齡 (每5歲為一個區間) - Age (5-years gap):</label>
+                <input type="text" class="clearable" name="age" id="idAge"
+                    placeholder="請輸入年齡 - Enter age" required>
+
+                <label for="idHeight">身高 (公分) - Height (cm):</label>
+                <input type="text" class="clearable" name="height" id="idHeight"
+                    placeholder="請輸入身高 - Enter height" required>
+
+                <label for="idWeight">體重 (公斤) - Weight (kg):</label>
+                <input type="text" class="clearable" name="weight" id="idWeight"
+                    placeholder="請輸入體重 - Enter weight" required>
+
+                <label for="idWaist">腰圍 (公分) - Waist (cm):</label>
+                <input type="text" class="clearable" name="waist" id="idWaist"
+                    placeholder="請輸入腰圍 - Enter waist size" required>
+
+                <label for="idEyesightLeft">視力 (左眼) - Eyesight (left):</label>
+                <input type="text" class="clearable" name="eyesight_left"
+                    id="idEyesightLeft"
+                    placeholder="請輸入左眼視力 - Enter left eyesight" required>
+
+                <label for="idEyesightRight">視力 (右眼) - Eyesight (right):</label>
+                <input type="text" class="clearable" name="eyesight_right"
+                    id="idEyesightRight"
+                    placeholder="請輸入右眼視力 - Enter right eyesight" required>
+
+                <label for="idHearingLeft">聽力 (左耳) - Hearing (left):</label>
+                <input type="text" class="clearable" name="hearing_left"
+                    id="idHearingLeft"
+                    placeholder="請輸入左耳聽力 - Enter left hearing" required>
+
+                <label for="idHearingRight">聽力 (右耳) - Hearing (right):</label>
+                <input type="text" class="clearable" name="hearing_right"
+                    id="idHearingRight"
+                    placeholder="請輸入右耳聽力 - Enter right hearing" required>
+
+                <label for="idSystolic">收縮壓 - Systolic (Blood pressure):</label>
+                <input type="text" class="clearable" name="systolic"
+                    id="idSystolic"
+                    placeholder="請輸入收縮壓 - Enter systolic BP" required>
+
+                <label for="idRelaxation">舒張壓 - Relaxation (Blood pressure):</label>
+                <input type="text" class="clearable" name="relaxation"
+                    id="idRelaxation"
+                    placeholder="請輸入舒張壓 - Enter diastolic BP" required>
+
+                <label for="idFastingBloodSugar">空腹血糖 - Fasting Blood Sugar:</label>
+                <input type="text" class="clearable" name="fasting_blood_sugar"
+                    id="idFastingBloodSugar"
+                    placeholder="請輸入空腹血糖 - Enter fasting blood sugar" required>
+
+                <label for="idCholesterolTotal">總膽固醇 - Cholesterol (Total):</label>
+                <input type="text" class="clearable" name="cholesterol_total"
+                    id="idCholesterolTotal"
+                    placeholder="請輸入總膽固醇 - Enter total cholesterol" required>
+
+                <label for="idTriglyceride">三酸甘油脂 - Triglyceride:</label>
+                <input type="text" class="clearable" name="triglyceride"
+                    id="idTriglyceride"
+                    placeholder="請輸入三酸甘油脂 - Enter triglyceride level" required>
+
+                <label for="idHDLCholesterol">高密度脂蛋白膽固醇 - HDL (Cholesterol
+                    Type):</label>
+                <input type="text" class="clearable" name="hdl_cholesterol"
+                    id="idHDLCholesterol"
+                    placeholder="請輸入高密度脂蛋白膽固醇 - Enter HDL cholesterol" required>
+
+                <label for="idLDLCholesterol">低密度脂蛋白膽固醇 - LDL (Cholesterol
+                    Type):</label>
+                <input type="text" class="clearable" name="ldl_cholesterol"
+                    id="idLDLCholesterol"
+                    placeholder="請輸入低密度脂蛋白膽固醇 - Enter LDL cholesterol" required>
+
+                <label for="idHemoglobin">血紅素 - Hemoglobin:</label>
+                <input type="text" class="clearable" name="hemoglobin"
+                    id="idHemoglobin"
+                    placeholder="請輸入血紅素 - Enter hemoglobin level" required>
+
+                <label for="idUrineProtein">尿蛋白 - Urine Protein:</label>
+                <input type="text" class="clearable" name="urine_protein"
+                    id="idUrineProtein"
+                    placeholder="請輸入尿蛋白 - Enter urine protein level" required>
+
+                <label for="idSerumCreatinine">血清肌酐 - Serum Creatinine:</label>
+                <input type="text" class="clearable" name="serum_creatinine"
+                    id="idSerumCreatinine"
+                    placeholder="請輸入血清肌酐 - Enter serum creatinine level"
+                    required>
+
+                <label for="idAST">天冬氨酸轉胺酶 - AST (glutamic oxaloacetic
+                    transaminase
+                    type):</label>
+                <input type="text" class="clearable" name="ast" id="idAST"
+                    placeholder="請輸入天冬氨酸轉胺酶 - Enter AST level" required>
+
+                <label for="idALT">丙氨酸轉胺酶 - ALT (glutamic oxaloacetic
+                    transaminase
+                    type):</label>
+                <input type="text" class="clearable" name="alt" id="idALT"
+                    placeholder="請輸入丙氨酸轉胺酶 - Enter ALT level" required>
+
+                <label for="idGTP">γ-谷胺酸轉肽酶 - GTP (γ-GTP):</label>
+                <input type="text" class="clearable" name="gtp" id="idGTP"
+                    placeholder="請輸入γ-谷胺酸轉肽酶 - Enter GTP level" required>
+
+                <label for="idDentalCaries">牙齒蛀牙情況 - Dental Caries:</label>
+                <input type="text" class="clearable" name="dental_caries"
+                    id="idDentalCaries"
+                    placeholder="請輸入牙齒蛀牙情況 - Enter dental caries status"
+                    required>
+                <input class="rand" type="button" onclick="generateRandomData()"
+                    value="生成隨機資料">
+                <input type="button" id="scrollToTopBtn"
+                    onclick="toggleDetails()"
+                    value="填寫資料">
+            </div>
+
+            <div class="right-column">
+                <h1>顯示填寫資料</h1>
+
+                <div class="details-container" id="detailsContainer">
+                    <div class="field-container">
+                        <label for="idAgeRight">年齡 (每5歲為一個區間) - Age (5-years
+                            gap):</label>
+                        <span id="idAgeRightSpan" class="filled-data"
+                            placeholder="Not filled"></span>
+                    </div>
+
+                    <div class="field-container">
+                        <label for="idHeightRight">身高 (公分) - Height (cm):</label>
+                        <span id="idHeightRightSpan" class="filled-data"
+                            placeholder="Not filled"></span>
+                    </div>
+
+                    <div class="field-container">
+                        <label for="idWeightRight">體重 (公斤) - Weight (kg):</label>
+                        <span id="idWeightRightSpan" class="filled-data"
+                            placeholder="Not filled"></span>
+                    </div>
+
+                    <div class="field-container">
+                        <label for="idWaistRight">腰圍 (公分) - Waist (cm):</label>
+                        <span id="idWaistRightSpan" class="filled-data"
+                            placeholder="Not filled"></span>
+                    </div>
+
+                    <div class="field-container">
+                        <label for="idEyesightLeftRight">視力 (左眼) - Eyesight
+                            (left):</label>
+                        <span id="idEyesightLeftRightSpan" class="filled-data"
+                            placeholder="Not filled"></span>
+                    </div>
+
+                    <div class="field-container">
+                        <label for="idEyesightRightRight">視力 (右眼) - Eyesight
+                            (right):</label>
+                        <span id="idEyesightRightRightSpan" class="filled-data"
+                            placeholder="Not filled"></span>
+                    </div>
+
+                    <div class="field-container">
+                        <label for="idHearingLeftRight">聽力 (左耳) - Hearing
+                            (left):</label>
+                        <span id="idHearingLeftRightSpan" class="filled-data"
+                            placeholder="Not filled"></span>
+                    </div>
+
+                    <div class="field-container">
+                        <label for="idHearingRightRight">聽力 (右耳) - Hearing
+                            (right):</label>
+                        <span id="idHearingRightRightSpan" class="filled-data"
+                            placeholder="Not filled"></span>
+                    </div>
+
+                    <div class="field-container">
+                        <label for="idSystolicRight">收縮壓 - Systolic (Blood
+                            pressure):</label>
+                        <span id="idSystolicRightSpan" class="filled-data"
+                            placeholder="Not filled"></span>
+                    </div>
+
+                    <div class="field-container">
+                        <label for="idRelaxationRight">舒張壓 - Relaxation (Blood
+                            pressure):</label>
+                        <span id="idRelaxationRightSpan" class="filled-data"
+                            placeholder="Not filled"></span>
+                    </div>
+
+                    <div class="field-container">
+                        <label for="idFastingBloodSugarRight">空腹血糖 - Fasting
+                            Blood Sugar:</label>
+                        <span id="idFastingBloodSugarRightSpan"
+                            class="filled-data" placeholder="Not filled"></span>
+                    </div>
+
+                    <div class="field-container">
+                        <label for="idCholesterolTotalRight">總膽固醇 - Cholesterol
+                            (Total):</label>
+                        <span id="idCholesterolTotalRightSpan"
+                            class="filled-data" placeholder="Not filled"></span>
+                    </div>
+
+                    <div class="field-container">
+                        <label for="idTriglycerideRight">三酸甘油脂 - Triglyceride:</label>
+                        <span id="idTriglycerideRightSpan" class="filled-data"
+                            placeholder="Not filled"></span>
+                    </div>
+
+                    <div class="field-container">
+                        <label for="idHDLCholesterolRight">高密度脂蛋白膽固醇 - HDL
+                            (Cholesterol Type):</label>
+                        <span id="idHDLCholesterolRightSpan" class="filled-data"
+                            placeholder="Not filled"></span>
+                    </div>
+
+                    <div class="field-container">
+                        <label for="idLDLCholesterolRight">低密度脂蛋白膽固醇 - LDL
+                            (Cholesterol Type):</label>
+                        <span id="idLDLCholesterolRightSpan" class="filled-data"
+                            placeholder="Not filled"></span>
+                    </div>
+
+                    <div class="field-container">
+                        <label for="idHemoglobinRight">血紅素 - Hemoglobin:</label>
+                        <span id="idHemoglobinRightSpan" class="filled-data"
+                            placeholder="Not filled"></span>
+                    </div>
+
+                    <div class="field-container">
+                        <label for="idUrineProteinRight">尿蛋白 - Urine Protein:</label>
+                        <span id="idUrineProteinRightSpan" class="filled-data"
+                            placeholder="Not filled"></span>
+                    </div>
+
+                    <div class="field-container">
+                        <label for="idSerumCreatinineRight">血清肌酐 - Serum
+                            Creatinine:</label>
+                        <span id="idSerumCreatinineRightSpan"
+                            class="filled-data" placeholder="Not filled"></span>
+                    </div>
+
+                    <div class="field-container">
+                        <label for="idASTRight">天冬氨酸轉胺酶 - AST (glutamic
+                            oxaloacetic transaminase type):</label>
+                        <span id="idASTRightSpan" class="filled-data"
+                            placeholder="Not filled"></span>
+                    </div>
+
+                    <div class="field-container">
+                        <label for="idALTRight">丙氨酸轉胺酶 - ALT (glutamic
+                            oxaloacetic transaminase type):</label>
+                        <span id="idALRightSpan" class="filled-data"
+                            placeholder="Not filled"></span>
+                    </div>
+
+                    <div class="field-container">
+                        <label for="idGTPRight">γ-谷胺酸轉肽酶 - GTP (γ-GTP):</label>
+                        <span id="idGTPRightSpan" class="filled-data"
+                            placeholder="Not filled"></span>
+                    </div>
+
+                    <div class="field-container">
+                        <label for="idDentalCariesRight">牙齒蛀牙情況 - Dental Caries:</label>
+                        <span id="idDentalCariesRightSpan" class="filled-data"
+                            placeholder="Not filled"></span>
+                    </div>
+
+                    <input type="button" id="scrollToTopBtnSubmit" value="提交" onclick="submitForm()">
+                </div>
+            </div>
+            <div class="ans-column">
+                <label id="askSmoke">是否有抽菸 : </label>
+                <label id="checkSmoke">0</label>
+            </div>
+        </form>
+        <script src="smoker.js"></script>
+    </body>
+</html>
